@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <NoWarn>CS8073</NoWarn>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+     <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.15.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <OpenApiReference Include="OpenAPIs\swagger.yaml" CodeGenerator="NSwagCSharp">
+      <SourceUri>https://api.accept.madaster.com/api/v4.0/swagger.yaml</SourceUri>
+      <ClassName>{controller}Client</ClassName>
+      <Namespace>example.client</Namespace>
+      <Options>/UseBaseUrl:false</Options>
+      <OutputPath>MadasterClient.cs</OutputPath>
+    </OpenApiReference>
+  </ItemGroup>
+
+</Project>
